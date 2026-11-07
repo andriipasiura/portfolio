@@ -9,13 +9,20 @@ const PLACEHOLDER_LINKS: ProjectLinks = { live: '#', source: '#' };
 
 const entries: ProjectEntry[] = [
   {
-    title: '[Project name]',
-    kind: '[Fullstack · pet project]',
-    summary: SUMMARY_PLACEHOLDER,
+    title: 'UmiFy',
+    kind: 'Fullstack · pet project',
+    summary: {
+      full: 'Web app for building UML use case diagrams. Drag actors, use cases and system boundaries onto a canvas, connect them with real UML relationships, then export the result or share a read-only link.',
+      short: 'Web app for building UML use case diagrams with export and read-only share links.',
+    },
     highlights:
-      '[One or two concrete things you solved: a tricky feature, an architecture decision, a measurable result.]',
-    stack: ['[Tech]', '[Tech]', '[Tech]', '[Tech]', '[Tech]'],
-    links: PLACEHOLDER_LINKS,
+      'A React Flow editor with association, include, extend and generalization edges, undo / redo and PNG / SVG export. Auth.js sign-in with GitHub, Google or as a guest, and a Drizzle data layer tested against in-memory Postgres (PGlite).',
+    stack: ['Next.js', 'TypeScript', 'React Flow', 'Zustand', 'Drizzle ORM', 'PostgreSQL'],
+    links: { source: 'https://github.com/andriipasiura/umify' },
+    image: {
+      src: '/projects/umify.png',
+      alt: 'UmiFy editor with a patient booking use case diagram',
+    },
   },
   {
     title: '[Project name]',
