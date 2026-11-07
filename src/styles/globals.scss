@@ -4,9 +4,26 @@
 @use 'breakpoints' as bp;
 
 html {
+  scrollbar-color: var(--color-accent) transparent;
+  scrollbar-width: thin;
+
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
   }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
 }
 
 body {
