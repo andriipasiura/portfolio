@@ -41,7 +41,6 @@ src/
   content/        all copy and data, typed by content/schema.ts
   lib/            SEO builders, cn helper
   styles/         tokens (primitives, semantic themes), breakpoints, mixins, reset, globals
-docs/handoff/     the original brief and design files
 ```
 
 Every component lives in its own folder with `Component.tsx`, `Component.module.scss` and `index.ts`. Only the theme toggle, mobile menu, nav highlight, copy button and local time ship client JS; everything else renders on the server at build time.
