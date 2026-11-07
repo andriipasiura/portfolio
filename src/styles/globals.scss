@@ -4,8 +4,10 @@
 @use 'breakpoints' as bp;
 
 html {
-  scrollbar-color: var(--color-accent) transparent;
-  scrollbar-width: thin;
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: var(--color-accent) transparent;
+    scrollbar-width: thin;
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -13,8 +15,8 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
