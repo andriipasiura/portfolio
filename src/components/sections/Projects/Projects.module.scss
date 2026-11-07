@@ -113,7 +113,7 @@
 
 .shot {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-surface-2);
   transition: transform 500ms var(--ease-out);

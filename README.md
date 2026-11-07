@@ -75,7 +75,7 @@ Each entry in `src/content/projects.ts` accepts:
 }
 ```
 
-`links` and `image` are optional. Without `image` the striped placeholder is shown; without links the buttons are hidden. Put screenshots in `public/projects/` at 16:10 (for example 1600 × 1000).
+`links` and `image` are optional. Without `image` the striped placeholder is shown; without links the buttons are hidden. Put screenshots in `public/projects/` at 16:9 (for example 1920 × 1080).
 
 ## Replacing the CV
 
