@@ -1,0 +1,69 @@
+@use '@/styles/breakpoints' as bp;
+
+.iconButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-fg);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast),
+    border-color var(--duration-fast),
+    color var(--duration-fast),
+    transform var(--duration-fast);
+}
+
+.outline {
+  width: 40px;
+  height: 40px;
+  border-color: var(--color-line-2);
+  border-radius: var(--radius-sm);
+
+  @include bp.down(bp.$md) {
+    width: 44px;
+    height: 44px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent-text);
+    }
+  }
+}
+
+.round {
+  width: 52px;
+  height: 52px;
+  border-color: var(--color-line-2);
+  border-radius: 50%;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-on-accent);
+    }
+  }
+}
+
+.bare {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+
+  @include bp.down(bp.$md) {
+    width: 44px;
+    height: 44px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent-text);
+    }
+  }
+}

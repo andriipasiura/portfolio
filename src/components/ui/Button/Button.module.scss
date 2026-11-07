@@ -1,0 +1,84 @@
+@use '@/styles/breakpoints' as bp;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-fg);
+  transition:
+    background-color var(--duration-fast),
+    border-color var(--duration-fast),
+    color var(--duration-fast);
+
+  svg {
+    flex: none;
+  }
+}
+
+.sm {
+  height: 40px;
+  padding-inline: var(--space-4);
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.md {
+  height: 42px;
+  padding-inline: var(--space-4);
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.lg {
+  height: 48px;
+  padding-inline: var(--space-5);
+  font-size: 0.9375rem;
+}
+
+.sm,
+.md {
+  @include bp.down(bp.$md) {
+    height: 44px;
+  }
+}
+
+.accent {
+  border-color: var(--color-accent);
+}
+
+.outline,
+.subtle {
+  border-color: var(--color-line-2);
+}
+
+.ghost {
+  padding-inline: var(--space-4);
+}
+
+@media (hover: hover) {
+  .accent:hover,
+  .outline:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  .subtle:hover,
+  .ghost:hover {
+    color: var(--color-accent-text);
+  }
+}
+
+.stretch {
+  @include bp.down(bp.$md) {
+    flex: 1;
+    width: 100%;
+    padding-inline: var(--space-2);
+    gap: var(--space-2);
+  }
+}
