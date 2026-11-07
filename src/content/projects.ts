@@ -23,6 +23,10 @@ const entries: ProjectEntry[] = [
       src: '/projects/umify.png',
       alt: 'UmiFy editor with a patient booking use case diagram',
     },
+    secondaryImage: {
+      src: '/projects/umify-dashboard.png',
+      alt: 'UmiFy dashboard listing saved diagrams with tags and filters',
+    },
   },
   {
     title: '[Project name]',

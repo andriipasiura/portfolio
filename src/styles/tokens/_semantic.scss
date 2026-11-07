@@ -13,6 +13,8 @@
   --color-accent-text: var(--orange-400);
   --color-tint: color-mix(in srgb, var(--color-accent) 14%, transparent);
   --color-glow: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  --color-shadow: var(--black-a70);
+  --opacity-recessed: 0.55;
 
   color-scheme: dark;
 }
@@ -32,6 +34,8 @@
   --color-accent-text: var(--orange-700);
   --color-tint: color-mix(in srgb, var(--color-accent) 10%, transparent);
   --color-glow: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  --color-shadow: var(--zinc-950-a25);
+  --opacity-recessed: 0.9;
 
   color-scheme: light;
 }
