@@ -1,6 +1,6 @@
 const rawLength = /(?<![\w.-])(?!0(?:px|rem)?\b|1px\b)\d*\.?\d+(?:px|rem|em)\b/;
 
-export default {
+const config = {
   extends: ['stylelint-config-standard-scss'],
   rules: {
     'selector-class-pattern': [
@@ -8,6 +8,8 @@ export default {
       { message: 'Use camelCase class names in CSS modules' },
     ],
     'color-no-hex': true,
+    'custom-property-empty-line-before': null,
+    'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
     'color-named': 'never',
     'declaration-property-value-disallowed-list': [
       {
@@ -29,3 +31,5 @@ export default {
     },
   ],
 };
+
+export default config;

@@ -21,11 +21,12 @@ export default defineConfig([
     },
   },
   {
-    files: [
-      'src/app/**/{layout,page,robots,sitemap,opengraph-image}.{ts,tsx}',
-      '*.config.{ts,mjs}',
-    ],
+    files: ['src/app/**/{layout,page,robots,sitemap}.{ts,tsx}', '*.config.{ts,mjs}'],
     rules: { 'import/no-default-export': 'off' },
+  },
+  {
+    files: ['src/features/clipboard/copy-text.ts'],
+    rules: { '@typescript-eslint/no-deprecated': 'off' },
   },
   {
     files: ['**/*.mjs'],
