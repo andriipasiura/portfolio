@@ -1,12 +1,11 @@
-import { type IconType } from 'react-icons';
-import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa6';
-
 import { type Social } from '@/content';
 
-const ICONS: Record<Social['network'], IconType> = {
-  linkedin: FaLinkedin,
-  github: FaGithub,
-  telegram: FaTelegram,
+import { Icon, type IconName } from '../Icon';
+
+const ICONS: Record<Social['network'], IconName> = {
+  linkedin: 'mdi:linkedin',
+  github: 'simple-icons:github',
+  telegram: 'simple-icons:telegram',
 };
 
 type Props = {
@@ -15,6 +14,5 @@ type Props = {
 };
 
 export function SocialIcon({ network, size = 20 }: Props) {
-  const Icon = ICONS[network];
-  return <Icon size={size} aria-hidden />;
+  return <Icon name={ICONS[network]} size={size} />;
 }

@@ -7,7 +7,7 @@ Personal portfolio of Andrii Pasiura. A single static page built with Next.js an
 - Next.js (App Router) with `output: 'export'`, TypeScript `strict`
 - SCSS modules on top of design tokens exposed as CSS custom properties
 - `next/font/google`: Inter and JetBrains Mono
-- `lucide-react` for UI icons, `react-icons` for brand and tech icons
+- `lucide-react` for UI icons, [Iconify](https://icon-sets.iconify.design/) sets (`simple-icons`, `devicon-plain`, `lucide`, `mdi`) for brand and tech icons, inlined as SVG at build time
 - Vitest, ESLint (`eslint-config-next` + `typescript-eslint`), Stylelint, Prettier
 - pnpm
 
@@ -32,7 +32,7 @@ src/
   components/
     layout/       Header, MobileMenu, SideRail, Footer
     sections/     Hero, About, Experience, Skills, Projects, Contact
-    ui/           Container, SectionTitle, Button, IconButton, Chip, TechIcon, SocialIcon
+    ui/           Container, SectionTitle, Button, IconButton, Chip, Icon, TechIcon, SocialIcon
   features/
     theme/        system-aware theme with a flash-free inline script and a toggle
     clipboard/    copy email button with Clipboard API fallback
@@ -52,12 +52,12 @@ All copy lives in `src/content/`:
 
 - `site.ts`: name, links, SEO, navigation, UI labels, hero, about, contact
 - `experience.ts`: jobs (`full` copy for desktop, `short` copy for mobile)
-- `skills.ts`: skill groups; `mark` is the two-letter badge shown when no brand icon exists
+- `skills.ts`: skill groups; `icon` is an Iconify id such as `simple-icons:react`
 - `projects.ts`: project cards
 
 Types in `content/schema.ts` describe every field, so a missing or wrong field fails `pnpm typecheck` and `pnpm build`. `content/content.test.ts` checks the rules types can't express (no em dashes, unique nav ids, one current job and so on).
 
-Brand icons for skills are mapped by name in `src/components/ui/TechIcon/TechIcon.tsx`.
+Icons are Iconify ids (`prefix:name`). Find one at https://icon-sets.iconify.design/ and use it directly if its set is registered in `src/components/ui/Icon/icons.ts`; otherwise install `@iconify-json/<prefix>` and add it there. An unknown id fails the build.
 
 ## Replacing the project placeholders
 

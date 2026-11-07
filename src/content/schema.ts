@@ -1,3 +1,5 @@
+import { type IconName } from '@/components/ui/Icon/icons';
+
 export type HttpsUrl = `https://${string}`;
 
 export type LinkHref = HttpsUrl | '#';
@@ -102,7 +104,7 @@ export type Job = {
 
 export type Skill = {
   name: string;
-  mark: string;
+  icon: IconName;
 };
 
 export type SkillGroup = {
