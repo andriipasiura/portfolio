@@ -52,10 +52,9 @@ describe('content', () => {
     }
   });
 
-  it('uses short badge marks and unique names within each skill group', () => {
+  it('has unique skill names within each group', () => {
     for (const group of skills) {
       expect(group.items.length).toBeGreaterThan(0);
-      for (const skill of group.items) expect(skill.mark.length).toBeLessThanOrEqual(2);
       const names = group.items.map((skill) => skill.name);
       expect(new Set(names).size).toBe(names.length);
     }

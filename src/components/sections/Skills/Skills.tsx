@@ -23,11 +23,7 @@ export function Skills({ title, groups }: Props) {
             </h3>
             <ul className={styles.list}>
               {group.items.map((skill) => (
-                <Chip
-                  key={skill.name}
-                  variant="skill"
-                  icon={<TechIcon name={skill.name} mark={skill.mark} />}
-                >
+                <Chip key={skill.name} variant="skill" icon={<TechIcon icon={skill.icon} />}>
                   {skill.name}
                 </Chip>
               ))}

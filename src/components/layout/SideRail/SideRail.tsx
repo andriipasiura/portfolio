@@ -27,7 +27,6 @@ export function SideRail({ socials, label }: Props) {
           </li>
         ))}
       </ul>
-      <span className={styles.line} aria-hidden />
     </nav>
   );
 }

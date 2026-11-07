@@ -4,12 +4,8 @@
 .rail {
   position: fixed;
   right: var(--space-9);
-  bottom: 0;
+  bottom: var(--space-10);
   z-index: var(--z-rail);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);
 
   @include bp.down(bp.$lg) {
     display: none;
@@ -40,11 +36,4 @@
       transform: none;
     }
   }
-}
-
-.line {
-  display: block;
-  width: 1px;
-  height: 80px;
-  background: var(--color-line-2);
 }

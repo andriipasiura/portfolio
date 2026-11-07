@@ -11,16 +11,11 @@
   border-radius: 6px;
   background: var(--color-bg);
   color: var(--color-fg-2);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  line-height: 1;
 
   @include bp.down(bp.$md) {
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    font-size: 0.5625rem;
   }
 }
 
