@@ -71,12 +71,11 @@ Each entry in `src/content/projects.ts` accepts:
   highlights: 'What was hard and how it was solved.',
   stack: ['Next.js', 'NestJS', 'PostgreSQL'],
   links: { live: 'https://…', source: 'https://github.com/…' },
-  image: { src: '/projects/my-app.webp', alt: 'My app editor' },
-  secondaryImage: { src: '/projects/my-app-list.webp', alt: 'My app dashboard' },
+  image: { src: '/projects/my-app.webp', alt: 'My app dashboard' },
 }
 ```
 
-`links`, `image` and `secondaryImage` are optional. With both images, desktop shows them as two overlapping windows (`image` in front); mobile shows only `image`. Without `image` the striped placeholder is shown; without links the buttons are hidden. Put screenshots in `public/projects/` at 16:9 (for example 1920 × 1080).
+`links` and `image` are optional. Without `image` the striped placeholder is shown; without links the buttons are hidden. Put screenshots in `public/projects/` at 16:9 (for example 1920 × 1080).
 
 ## Replacing the CV
 
