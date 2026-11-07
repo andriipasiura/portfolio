@@ -1,0 +1,241 @@
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/mixins';
+
+.section {
+  padding-top: var(--section-gap);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+
+  @include bp.down(bp.$md) {
+    gap: var(--space-4);
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-areas:
+    'media'
+    'head'
+    'body'
+    'actions';
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  @include bp.up(bp.$lg) {
+    grid-template-areas:
+      'head actions'
+      'media body';
+    grid-template-columns: 3fr 2fr;
+    border-radius: var(--radius-xl);
+  }
+}
+
+.head {
+  grid-area: head;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) 0;
+
+  @include bp.up(bp.$lg) {
+    align-self: stretch;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-7) var(--space-9);
+    border-bottom: 1px solid var(--color-line);
+  }
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--color-line-2);
+
+  @include bp.up(bp.$lg) {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+}
+
+.title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+
+  @include bp.up(bp.$lg) {
+    font-size: 1.75rem;
+    letter-spacing: -0.025em;
+  }
+}
+
+.kind {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+
+  @include bp.up(bp.$lg) {
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2-5);
+    padding: var(--space-7) var(--space-9);
+    border-bottom: 1px solid var(--color-line);
+  }
+}
+
+.media {
+  grid-area: media;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-line);
+
+  @include bp.up(bp.$lg) {
+    padding: var(--space-7) 0 0 var(--space-9);
+    border-bottom: 0;
+  }
+}
+
+.shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  transition: transform 500ms var(--ease-out);
+
+  @include bp.up(bp.$lg) {
+    border: 1px solid var(--color-line-2);
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: var(--radius-md) 0 0;
+    box-shadow: 0 -20px 60px -20px var(--color-glow);
+  }
+
+  @media (hover: hover) {
+    .card:hover & {
+      transform: scale(1.01);
+    }
+  }
+
+  @include mixins.reduced-motion {
+    transition: none;
+  }
+}
+
+.image {
+  object-fit: cover;
+  object-position: top left;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 12px,
+    var(--color-line) 12px 13px
+  );
+
+  @include bp.up(bp.$lg) {
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0 14px,
+      var(--color-line) 14px 15px
+    );
+  }
+}
+
+.placeholderLabel {
+  padding: var(--space-1) var(--space-2);
+  border-radius: 6px;
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-dim);
+
+  @include bp.up(bp.$lg) {
+    padding: var(--space-1-5) var(--space-2-5);
+    font-size: 0.75rem;
+  }
+}
+
+.body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5) 0;
+
+  @include bp.up(bp.$lg) {
+    gap: var(--space-5-5);
+    padding: var(--space-8) var(--space-9);
+  }
+}
+
+.summary {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-fg-2);
+
+  @include bp.up(bp.$lg) {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3-5);
+}
+
+.term {
+  margin-bottom: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.highlights {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-fg-2);
+}
+
+.stackWrap {
+  margin: 0;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1-5);
+}
+
+.card:not(:has(.actions)) .body {
+  padding-bottom: var(--space-5);
+
+  @include bp.up(bp.$lg) {
+    padding-bottom: var(--space-8);
+  }
+}

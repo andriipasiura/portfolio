@@ -1,0 +1,25 @@
+@use '@/styles/mixins';
+
+.button {
+  flex: none;
+  color: var(--color-muted);
+  transition:
+    background-color var(--duration-fast),
+    color var(--duration-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-surface-2);
+      color: var(--color-accent-text);
+    }
+  }
+}
+
+.copied,
+.copied:hover {
+  color: var(--color-success);
+}
+
+.status {
+  @include mixins.visually-hidden;
+}

@@ -1,0 +1,53 @@
+@use '@/styles/breakpoints' as bp;
+
+.section {
+  padding-top: var(--section-gap);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  max-width: 980px;
+  margin-inline: auto;
+
+  @include bp.down(bp.$md) {
+    gap: var(--space-7);
+  }
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  @include bp.down(bp.$md) {
+    gap: var(--space-3);
+  }
+}
+
+.name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+
+  @include bp.down(bp.$md) {
+    font-size: 0.9375rem;
+  }
+}
+
+.parens {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-accent-text);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2-5);
+
+  @include bp.down(bp.$md) {
+    gap: var(--space-1-5);
+  }
+}
