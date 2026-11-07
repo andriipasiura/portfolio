@@ -25,7 +25,7 @@ export const experience: Job[] = [
         'size-limit in GitLab CI; web release sheriff twice.',
       ],
     },
-    tech: ['React', 'TypeScript', 'Module Federation', 'Webpack', 'Vite', 'GitLab CI', 'BigQuery'],
+    tech: ['React', 'TypeScript', 'Redux', 'Zustand', 'Module Federation', 'Webpack', 'Vite', 'GitLab CI', 'BigQuery'],
   },
   {
     role: 'Frontend Developer',
@@ -50,6 +50,6 @@ export const experience: Job[] = [
         'Casino lobby Lighthouse 35 → 65.',
       ],
     },
-    tech: ['React', 'TypeScript', 'Zustand', 'Monorepo', 'CMS'],
+    tech: ['React', 'TypeScript', 'Zustand', 'Tanstack Query', 'Monorepo', 'CMS'],
   },
 ];
