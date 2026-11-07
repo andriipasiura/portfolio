@@ -142,6 +142,68 @@
   object-position: top left;
 }
 
+.stacked {
+  @include bp.up(bp.$lg) {
+    .stage {
+      position: relative;
+      aspect-ratio: 16 / 11;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 6% 2% 0 8%;
+        background-image: radial-gradient(var(--color-line-2) 1px, transparent 1.5px);
+        background-size: 14px 14px;
+        mask-image: radial-gradient(closest-side, var(--color-fg), transparent);
+      }
+    }
+
+    .back,
+    .front {
+      position: absolute;
+      width: 78%;
+      transition: transform 500ms var(--ease-out);
+    }
+
+    .back {
+      top: 0;
+      left: 0;
+      opacity: var(--opacity-recessed);
+    }
+
+    .front {
+      right: 0;
+      bottom: 0;
+      box-shadow:
+        0 30px 60px -20px var(--color-shadow),
+        0 20px 80px -30px var(--color-glow);
+    }
+
+    @media (hover: hover) {
+      .card:hover & .back {
+        transform: translate(-6px, -6px);
+      }
+
+      .card:hover & .front {
+        transform: translate(6px, 6px);
+      }
+    }
+
+    @include mixins.reduced-motion {
+      .back,
+      .front {
+        transition: none;
+      }
+    }
+  }
+}
+
+.back {
+  @include bp.down(bp.$lg) {
+    display: none;
+  }
+}
+
 .placeholder {
   display: flex;
   align-items: center;

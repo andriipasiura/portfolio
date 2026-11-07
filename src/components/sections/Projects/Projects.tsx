@@ -68,25 +68,38 @@ function ProjectCard({ project, labels }: { project: Project; labels: Labels }) 
         </div>
       )}
 
-      <div className={styles.media}>
-        <div className={styles.shot}>
-          {project.image ? (
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              fill
-              sizes="(width >= 1024px) 700px, 100vw"
-              className={styles.image}
-            />
-          ) : (
-            <div
-              className={styles.placeholder}
-              role="img"
-              aria-label={`${project.title} screenshot placeholder`}
-            >
-              <span className={styles.placeholderLabel}>{labels.screenshotPlaceholder}</span>
+      <div className={cn(styles.media, project.secondaryImage && styles.stacked)}>
+        <div className={styles.stage}>
+          {project.secondaryImage && (
+            <div className={cn(styles.shot, styles.back)}>
+              <Image
+                src={project.secondaryImage.src}
+                alt={project.secondaryImage.alt}
+                fill
+                sizes="560px"
+                className={styles.image}
+              />
             </div>
           )}
+          <div className={cn(styles.shot, project.secondaryImage && styles.front)}>
+            {project.image ? (
+              <Image
+                src={project.image.src}
+                alt={project.image.alt}
+                fill
+                sizes="(width >= 1024px) 560px, 100vw"
+                className={styles.image}
+              />
+            ) : (
+              <div
+                className={styles.placeholder}
+                role="img"
+                aria-label={`${project.title} screenshot placeholder`}
+              >
+                <span className={styles.placeholderLabel}>{labels.screenshotPlaceholder}</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

@@ -117,6 +117,11 @@ export type ProjectLinks = {
   source?: LinkHref;
 };
 
+export type ProjectImage = {
+  src: `/${string}`;
+  alt: string;
+};
+
 export type ProjectEntry = {
   title: string;
   kind: string;
@@ -124,7 +129,8 @@ export type ProjectEntry = {
   highlights: string;
   stack: string[];
   links?: ProjectLinks;
-  image?: { src: `/${string}`; alt: string };
+  image?: ProjectImage;
+  secondaryImage?: ProjectImage;
 };
 
 export type Project = ProjectEntry & {
