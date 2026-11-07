@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Andrii Pasiura, v4 mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+.root{--bg:#09090B;--surface:#111113;--surface2:#18181B;--hdr:rgba(9,9,11,0.82);--fg:#FAFAFA;--fg2:#D4D4D8;--muted:#A1A1AA;--dim:#8B8B93;--line:#232326;--line2:#34343A;--ok:#3DD68C;--acct:var(--acc-dark);--tint:color-mix(in srgb,var(--acc) 14%,transparent);--glow:color-mix(in srgb,var(--acc) 22%,transparent);color-scheme:dark}
+.root[data-theme="light"]{--bg:#FAFAF9;--surface:#FFFFFF;--surface2:#F4F4F5;--hdr:rgba(250,250,249,0.86);--fg:#09090B;--fg2:#27272A;--muted:#52525B;--dim:#63636B;--line:#E7E7EA;--line2:#D4D4D8;--ok:#15803D;--acct:var(--acc-light);--tint:color-mix(in srgb,var(--acc) 10%,transparent);--glow:color-mix(in srgb,var(--acc) 14%,transparent);color-scheme:light}
+.root a{color:var(--fg);text-decoration:none}
+.root a:focus-visible,.root button:focus-visible,.root input:focus-visible,.root textarea:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.root button:focus:not(:focus-visible){outline:none}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+@keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.6);opacity:0}}
+.ping{animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@media (prefers-reduced-motion: reduce){.ping{animation:none}}
+</style>
+</helmet>
+<div class="root" data-theme="{{theme}}" style="--acc: {{accent}}; --acc-dark: {{accDark}}; --acc-light: {{accLight}}; --onacc: {{onAcc}}; width: 390px; min-height: 8200px; background: var(--bg); color: var(--fg); font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; position: relative; font-size: 16px; line-height: 1.5; overflow: hidden;">
+<span id="v4m-top" style="position: absolute; top: 0; left: 0;"></span>
+
+<header style="position: sticky; top: 0; z-index: 20; height: 64px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; background: var(--hdr); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);">
+<a href="#v4m-top" onClick="{{toTop}}" style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">Andrii Pasiura<span style="color: var(--acct);">.</span></a>
+<div style="display: flex; gap: 8px;">
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" style="width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--line2); color: var(--fg); padding: 0;">
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="3"></circle><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"></path></svg></sc-if>
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"></path></svg></sc-if>
+</button>
+<button type="button" aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--line2); color: var(--fg); padding: 0;"><svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 1h16M0 9h16"></path></svg></button>
+</div>
+</header>
+
+<main>
+<section style="min-height: 720px; padding: 0 20px; display: flex; flex-direction: column; justify-content: center; gap: 18px; position: relative; box-sizing: border-box;">
+<div aria-hidden="true" style="position: absolute; left: 50%; top: 45%; width: 420px; height: 320px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, var(--glow), transparent); filter: blur(24px); pointer-events: none;"></div>
+<p class="mono" style="position: relative; margin: 8px 0 0; font-size: 15px; color: var(--acct);">Hi, my name is,</p>
+<h1 style="position: relative; margin: 0; font-size: 58px; line-height: 1; letter-spacing: -0.045em; font-weight: 800;">Andrii Pasiura</h1>
+<p style="position: relative; margin: 0; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; color: var(--muted);">Frontend / Fullstack Developer.</p>
+<p style="position: relative; margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted);">3 years of React and TypeScript on a live streaming platform (30+ micro-frontends) and a multi-brand iGaming platform. Now building with NestJS and PostgreSQL.</p>
+<div style="position: relative; display: flex; gap: 8px; margin-top: 8px;">
+<a href="#contact" style="flex: 1; height: 48px; border-radius: 10px; border: 1px solid var(--acc); display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 500;"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"></rect><path d="m2.5 5 7.5 6 7.5-6"></path></svg>Get in touch</a>
+<a href="#projects" style="flex: 1; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 500; color: var(--fg2);"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 2h5v5M14 2 7 9M12 9.5V14H2V4h4.5"></path></svg>View projects</a>
+</div>
+<div style="position: relative; display: flex; justify-content: flex-end; gap: 4px; margin-top: 4px;"><a href="https://www.linkedin.com/in/andrii-pasiura" aria-label="LinkedIn" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--muted);"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="15" height="11" rx="2"></rect><path d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5M2.5 10.5h15"></path></svg></a><a href="https://github.com/andriipasiura" aria-label="GitHub" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--muted);"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="5" cy="4.5" r="2"></circle><circle cx="5" cy="15.5" r="2"></circle><circle cx="15" cy="7.5" r="2"></circle><path d="M5 6.5v7M15 9.5c0 3-4 2.5-8.5 5"></path></svg></a><a href="https://t.me/pa_andrii" aria-label="Telegram" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--muted);"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M18 2.5 1.8 9l5.6 2.2L16 5l-6.6 7.6 6.1 4.9L18 2.5Z"></path></svg></a></div>
+</section>
+
+<section id="about" style="padding: 72px 20px 0;">
+<h2 style="margin: 0 0 32px; text-align: center; font-size: 24px; font-weight: 700;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> About me <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<p style="margin: 0 0 14px; font-size: 19px; line-height: 1.5;">Hey, I’m <span style="color: var(--acct); font-weight: 600;">Andrii</span>, a frontend developer from Kyiv moving into fullstack.</p>
+<p style="margin: 0 0 14px; font-size: 15px; line-height: 1.7; color: var(--fg2);">Two years in the web infrastructure team of an international live streaming platform: 30+ micro-frontends, 10+ frontend teams. Before that, features and brand launches on a multi-brand iGaming platform.</p>
+<p style="margin: 0 0 24px; font-size: 15px; line-height: 1.7; color: var(--fg2);">Now building fullstack projects with NestJS and PostgreSQL and finishing my degree at KPI.</p>
+<a href="#cv" style="margin-top: 16px; height: 48px; border-radius: 10px; border: 1px solid var(--acc); display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 500;">Download CV<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 1.5v7.5M3.5 6 7 9.5 10.5 6M2 12.5h10"></path></svg></a>
+</section>
+
+<section id="experience" style="padding: 88px 20px 0;">
+<h2 style="margin: 0 0 32px; text-align: center; font-size: 24px; font-weight: 700;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Experience <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<ol style="margin: 0; padding: 0 0 0 26px; list-style: none; position: relative; display: flex; flex-direction: column; gap: 20px;">
+<li aria-hidden="true" style="position: absolute; left: 6px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--acc), var(--line2));"></li>
+<li style="position: relative;"><span aria-hidden="true" style="position: absolute; left: -26px; top: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--acc); box-sizing: border-box;"></span>
+<article style="border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+<span class="mono" style="align-self: flex-start; font-size: 11px; color: var(--fg2); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line2);">Sep 2024 – Oct 2026</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3;">Frontend Developer <span style="color: var(--muted); font-weight: 500;">@</span> <span style="color: var(--acct);">Live streaming platform</span></h3>
+<p style="margin: 0; font-size: 13px; color: var(--muted);">Web Infrastructure · NDA · 10+ FE teams · 30+ MFEs</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.55; color: var(--fg2);">
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>Shared library for MFEs: ~20% fewer loader dependencies, about ⅓ of host MRs gone.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>Slack AI agent that explains metric drops after releases.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>Performance marks in Looker and Coralogix, SQL analysis in BigQuery.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>size-limit in GitLab CI; web release sheriff twice.</span></li>
+</ul>
+<ul aria-label="Technologies" style="margin: 2px 0 0; padding: 0; list-style: none; display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; font-weight: 500;"><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">React</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">TypeScript</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">Module Federation</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">Webpack</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">Vite</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">GitLab CI</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">BigQuery</li></ul>
+</article></li>
+<li style="position: relative;"><span aria-hidden="true" style="position: absolute; left: -26px; top: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line2); box-sizing: border-box;"></span>
+<article style="border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+<span class="mono" style="align-self: flex-start; font-size: 11px; color: var(--fg2); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line2);">Sep 2023 – Aug 2024</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3;">Frontend Developer <span style="color: var(--muted); font-weight: 500;">@</span> <span style="color: var(--acct);">Betinvest Ltd</span></h3>
+<p style="margin: 0; font-size: 13px; color: var(--muted);">B2B Platform · outstaff · iGaming, 20+ brands</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.55; color: var(--fg2);">
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>KYC flows, affiliate tracking, bonus cards, lobby game grids, from BA specs to production.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>Launched 4 partner brands; the fastest in 10 days.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>10+ libraries to TypeScript; Context to Zustand.</span></li>
+<li style="display: flex; gap: 10px;"><span aria-hidden="true" style="color: var(--acct);">▹</span><span>Casino lobby Lighthouse 35 → 65.</span></li>
+</ul>
+<ul aria-label="Technologies" style="margin: 2px 0 0; padding: 0; list-style: none; display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; font-weight: 500;"><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">React</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">TypeScript</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">Zustand</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">Monorepo</li><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">CMS</li></ul>
+</article></li>
+</ol>
+</section>
+
+<section id="skills" style="padding: 88px 20px 0;">
+<h2 style="margin: 0 0 32px; text-align: center; font-size: 24px; font-weight: 700;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> My skills <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<div style="display: flex; flex-direction: column; gap: 28px;">
+<sc-for list="{{skills}}" as="g" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><h3 style="margin: 0; font-size: 15px; font-weight: 600;">{{g.name}} <span class="mono" style="color: var(--acct); font-weight: 500;">()</span></h3></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;"><sc-for list="{{g.items}}" as="s" hint-placeholder-count="5"><li style="display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 10px 0 6px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface2); font-size: 13px; font-weight: 500;"><span aria-hidden="true" class="mono" style="width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; background: var(--bg); border: 1px solid var(--line2); color: var(--fg2);">{{s.m}}</span>{{s.n}}</li></sc-for></ul>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="projects" style="padding: 88px 20px 0;">
+<h2 style="margin: 0 0 32px; text-align: center; font-size: 24px; font-weight: 700;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Projects <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="3">
+<article style="border: 1px solid var(--line); border-radius: 18px; background: var(--surface); overflow: hidden;">
+<div role="img" aria-label="Project screenshot placeholder" style="aspect-ratio: 16 / 10; background: var(--surface2); background-image: repeating-linear-gradient(135deg, transparent 0 12px, var(--line) 12px 13px); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: center;"><span class="mono" style="font-size: 11px; color: var(--dim); padding: 4px 8px; border-radius: 6px; background: var(--surface);">[ app screenshot ]</span></div>
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; align-items: baseline; gap: 12px;"><span class="mono" style="font-size: 24px; color: var(--line2);">{{p.n}}</span><h3 style="margin: 0; font-size: 21px; font-weight: 700;">{{p.title}}</h3></div>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--fg2);">{{p.summary}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; font-weight: 500;"><sc-for list="{{p.stack}}" as="t" hint-placeholder-count="4"><li style="padding: 3px 10px; border-radius: 999px; background: var(--tint); color: var(--acct);">{{t}}</li></sc-for></ul>
+<div style="display: flex; gap: 8px; margin-top: 4px;"><a href="#" style="flex: 1; height: 44px; border-radius: 10px; border: 1px solid var(--acc); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 500;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 2h5v5M14 2 7 9M12 9.5V14H2V4h4.5"></path></svg>Live demo</a><a href="#" style="flex: 1; height: 44px; border-radius: 10px; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 500;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m5 4-3.5 4L5 12M11 4l3.5 4L11 12"></path></svg>Source code</a></div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section id="contact" style="padding: 88px 20px 64px;">
+<h2 style="margin: 0 0 32px; text-align: center; font-size: 24px; font-weight: 700;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Contact <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;">
+<h3 style="margin: 0; font-size: 34px; line-height: 1.08; font-weight: 800; letter-spacing: -0.035em;">Have a role in mind? <span style="color: var(--acct);">Let’s talk.</span></h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted);">Email and Telegram reach me fastest. Kyiv, {{kyivTime}} now.</p>
+<div style="align-self: stretch; display: flex; align-items: center; gap: 4px; padding: 4px 4px 4px 14px; border-radius: 12px; border: 1px solid var(--line2);">
+<a href="mailto:pasiura.andrii.dev@gmail.com" style="flex: 1; min-width: 0; text-align: left; font-size: 16px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">pasiura.andrii.dev@gmail.com</a>
+<button type="button" onClick="{{copy}}" aria-label="{{copyLabel}}" style="width: 44px; height: 44px; flex: none; border-radius: 9px; border: none; background: transparent; color: {{copyFg}}; display: flex; align-items: center; justify-content: center; padding: 0;">
+<sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1.5"></rect><path d="M9.5 4.5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v5A1.5 1.5 0 0 0 3 9.5h1.5"></path></svg></sc-if>
+<sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2.5 7.5 3 3 6-7"></path></svg></sc-if>
+</button>
+</div>
+<p aria-live="polite" style="margin: 0; height: 0; overflow: hidden;">{{copyStatus}}</p>
+<ul style="align-self: stretch; margin: 4px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+<li><a href="https://t.me/pa_andrii" style="height: 48px; border-radius: 10px; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 14px; font-weight: 500;"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M18 2.5 1.8 9l5.6 2.2L16 5l-6.6 7.6 6.1 4.9L18 2.5Z"></path></svg>Telegram</a></li>
+<li><a href="https://www.linkedin.com/in/andrii-pasiura" style="height: 48px; border-radius: 10px; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 14px; font-weight: 500;"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="15" height="11" rx="2"></rect><path d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5M2.5 10.5h15"></path></svg>LinkedIn</a></li>
+<li><a href="https://github.com/andriipasiura" style="height: 48px; border-radius: 10px; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 14px; font-weight: 500;"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="5" cy="4.5" r="2"></circle><circle cx="5" cy="15.5" r="2"></circle><circle cx="15" cy="7.5" r="2"></circle><path d="M5 6.5v7M15 9.5c0 3-4 2.5-8.5 5"></path></svg>GitHub</a></li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer style="padding: 8px 20px 40px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+<a href="#v4m-top" onClick="{{toTop}}" aria-label="Back to top" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 12.5V2M2.5 6.5 7 2l4.5 4.5"></path></svg></a>
+<p style="margin: 0; font-size: 12px; color: var(--dim);">© 2026 Andrii Pasiura</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6B35","options":["#FF6B35","#F5B60B","#E5484D"]},"theme":{"editor":"enum","default":"system","options":["system","light","dark"]},"$preview":{"width":390,"height":8200}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { theme: null, sysDark: true, now: Date.now(), copied: false }; }
+  componentDidMount() {
+    var self = this;
+    try {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)'); this._mq = mq;
+      this._onMq = function () { self.setState({ sysDark: mq.matches }); };
+      this.setState({ sysDark: mq.matches });
+      if (mq.addEventListener) mq.addEventListener('change', this._onMq);
+    } catch (e) {}
+    this._clock = setInterval(function () { self.setState({ now: Date.now() }); }, 30000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._clock); clearTimeout(this._t);
+    try { if (this._mq && this._mq.removeEventListener) this._mq.removeEventListener('change', this._onMq); } catch (e) {}
+  }
+  kyiv(now) {
+    try {
+      var d = new Date(now);
+      var time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', hour: '2-digit', minute: '2-digit' }).format(d);
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Kyiv', timeZoneName: 'shortOffset' }).formatToParts(d);
+      var off = (parts.find(function (p) { return p.type === 'timeZoneName'; }) || {}).value || 'GMT+2';
+      return { time: time, offset: off.replace('GMT', '') || '+0' };
+    } catch (e) { return { time: '', offset: '+2' }; }
+  }
+  renderVals() {
+    var s = this.state, self = this;
+    var acc = this.props.accent ?? '#FF6B35';
+    var pal = {
+      '#FF6B35': { dark: '#FF8A5C', light: '#C2410C', on: '#09090B' },
+      '#F5B60B': { dark: '#F5B60B', light: '#8A5A00', on: '#09090B' },
+      '#E5484D': { dark: '#FF6B70', light: '#C0262D', on: '#FFFFFF' }
+    }[String(acc).toUpperCase()] || { dark: acc, light: acc, on: '#09090B' };
+    var pref = s.theme || this.props.theme || 'system';
+    var resolved = pref === 'system' ? (s.sysDark ? 'dark' : 'light') : pref;
+    var k = this.kyiv(s.now);
+    var it = function (pairs) { return pairs.map(function (p) { return { m: p[0], n: p[1] }; }); };
+    return {
+      accent: acc, accDark: pal.dark, accLight: pal.light, onAcc: pal.on,
+      theme: resolved, isDark: resolved === 'dark', isLight: resolved === 'light',
+      themeLabel: resolved === 'dark' ? 'Switch to light theme' : 'Switch to dark theme',
+      toggleTheme: function () { self.setState({ theme: resolved === 'dark' ? 'light' : 'dark' }); },
+      toTop: function (e) {
+        try {
+          if (e && e.preventDefault) e.preventDefault();
+          var el = document.getElementById('v4m-top');
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        } catch (err) {}
+      },
+      kyivTime: k.time, kyivOffset: k.offset,
+      skills: [
+        { name: 'Frontend', items: it([['TS','TypeScript'],['JS','JavaScript'],['Re','React'],['Nx','Next.js'],['H5','HTML'],['Cs','CSS / SCSS'],['Tw','Tailwind CSS'],['ui','shadcn/ui']]) },
+        { name: 'State & data', items: it([['Zu','Zustand'],['Rx','Redux'],['TQ','TanStack Query'],['RH','React Hook Form'],['Zd','Zod']]) },
+        { name: 'Backend', items: it([['No','Node.js'],['Ne','NestJS'],['Pg','PostgreSQL'],['Dz','Drizzle ORM'],['Rd','Redis'],['{}','REST API design'],['JW','JWT auth']]) },
+        { name: 'Architecture & build', items: it([['MF','Module Federation'],['Wp','Webpack'],['Vi','Vite'],['pn','pnpm workspaces']]) },
+        { name: 'Performance & monitoring', items: it([['WV','Core Web Vitals'],['LH','Lighthouse'],['BA','Bundle analysis'],['Lk','Looker'],['Cx','Coralogix'],['BQ','BigQuery']]) },
+        { name: 'Testing, DevOps & AI', items: it([['Je','Jest'],['TL','Testing Library'],['Pw','Playwright'],['TC','Testcontainers'],['Dk','Docker'],['CI','GitLab CI'],['CC','Claude Code'],['Cx','Codex']]) }
+      ],
+      projects: [
+        { n: '01', title: '[Project name]', summary: '[Two or three sentences: what it does and what makes it interesting technically.]', stack: ['[Tech]', '[Tech]', '[Tech]', '[Tech]'] },
+        { n: '02', title: '[Project name]', summary: '[Two or three sentences: what it does and what makes it interesting technically.]', stack: ['[Tech]', '[Tech]', '[Tech]'] },
+        { n: '03', title: '[Project name]', summary: '[Two or three sentences: what it does and what makes it interesting technically.]', stack: ['[Tech]', '[Tech]'] }
+      ],
+      copied: !!s.copied,
+      notCopied: !s.copied,
+      copyLabel: s.copied ? 'Email copied' : 'Copy email',
+      copyStatus: s.copied ? 'Email copied to clipboard' : '',
+      copyFg: s.copied ? 'var(--ok)' : 'var(--muted)',
+      copy: function () {
+        try { if (navigator.clipboard) navigator.clipboard.writeText('pasiura.andrii.dev@gmail.com'); } catch (e) {}
+        self.setState({ copied: true }); clearTimeout(self._t);
+        self._t = setTimeout(function () { self.setState({ copied: false }); }, 2000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

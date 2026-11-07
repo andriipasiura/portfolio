@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Andrii Pasiura, v4 desktop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+.root{--bg:#09090B;--surface:#111113;--surface2:#18181B;--hdr:rgba(9,9,11,0.78);--fg:#FAFAFA;--fg2:#D4D4D8;--muted:#A1A1AA;--dim:#8B8B93;--line:#232326;--line2:#34343A;--ok:#3DD68C;--acct:var(--acc-dark);--tint:color-mix(in srgb,var(--acc) 14%,transparent);--glow:color-mix(in srgb,var(--acc) 22%,transparent);color-scheme:dark}
+.root[data-theme="light"]{--bg:#FAFAF9;--surface:#FFFFFF;--surface2:#F4F4F5;--hdr:rgba(250,250,249,0.82);--fg:#09090B;--fg2:#27272A;--muted:#52525B;--dim:#63636B;--line:#E7E7EA;--line2:#D4D4D8;--ok:#15803D;--acct:var(--acc-light);--tint:color-mix(in srgb,var(--acc) 10%,transparent);--glow:color-mix(in srgb,var(--acc) 14%,transparent);color-scheme:light}
+.root{transition:background-color 200ms,color 200ms}
+.root a{color:var(--fg);text-decoration:none}
+.root a:focus-visible,.root button:focus-visible,.root input:focus-visible,.root textarea:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.root button:focus:not(:focus-visible){outline:none}
+.root section[id]{scroll-margin-top:80px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+.nav a{color:var(--muted)!important;position:relative;padding:6px 0;transition:color 150ms}
+.nav a:hover{color:var(--fg)!important}
+.nav a.on{color:var(--fg)!important}
+.nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--acc)}
+.ob{transition:background-color 160ms,color 160ms,border-color 160ms}
+.ob:hover{background:var(--acc)!important;color:var(--onacc)!important;border-color:var(--acc)!important}
+.gh{transition:color 160ms}.gh:hover{color:var(--acct)!important}
+.card{transition:border-color 180ms,transform 180ms}
+.card:hover{border-color:var(--line2)!important;transform:translateY(-2px)}
+.tile{transition:border-color 160ms,background-color 160ms}
+.tile:hover{border-color:var(--acc)!important}
+.tile:hover .arr{transform:translate(3px,-3px);color:var(--acct)}
+.cpb{transition:background-color 150ms,color 150ms}
+.cpb:hover{background:var(--surface2)!important;color:var(--acct)!important}
+.chip{transition:border-color 150ms,transform 150ms}
+.chip:hover{border-color:var(--acc)!important;transform:translateY(-2px)}
+.arr{transition:transform 160ms,color 160ms}
+.rail a{color:var(--muted)!important;transition:color 150ms,transform 150ms}
+.rail a:hover{color:var(--acct)!important;transform:translateY(-3px)}
+.prj .shot{transition:transform 500ms cubic-bezier(.2,.8,.2,1)}
+.prj:hover .shot{transform:scale(1.01)}
+@keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.6);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ping{animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+.rise{animation:rise 700ms cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d)}
+@media (prefers-reduced-motion: reduce){.ping,.rise{animation:none}.chip:hover,.card:hover{transform:none}}
+</style>
+</helmet>
+<div class="root" data-theme="{{theme}}" style="--acc: {{accent}}; --acc-dark: {{accDark}}; --acc-light: {{accLight}}; --onacc: {{onAcc}}; background: var(--bg); color: var(--fg); font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; min-height: 6800px; position: relative; font-size: 16px; line-height: 1.5;">
+<span id="v4-top" style="position: absolute; top: 0; left: 0;"></span>
+
+<!-- HEADER -->
+<header style="position: sticky; top: 0; z-index: 20; background: var(--hdr); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 48px; height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-sizing: border-box;">
+<a href="#v4-top" onClick="{{toTop}}" style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em;">Andrii Pasiura<span style="color: var(--acct);">.</span></a>
+<nav class="nav" aria-label="Main" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">
+<a href="#v4-top" class="on" aria-current="page">Home</a>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px;">
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" class="gh" style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--line2); color: var(--fg); cursor: pointer; padding: 0;">
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="3"></circle><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"></path></svg></sc-if>
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"></path></svg></sc-if>
+</button>
+<a href="#cv" class="ob" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--acc); color: var(--fg) !important; font-size: 14px; font-weight: 500;">Resume<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 1.5v7.5M3.5 6 7 9.5 10.5 6M2 12.5h10"></path></svg></a>
+</div>
+</div>
+</header>
+
+<!-- side rail -->
+<nav class="rail" aria-label="Profiles" style="position: fixed; right: 36px; bottom: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<a href="https://www.linkedin.com/in/andrii-pasiura" aria-label="LinkedIn" title="LinkedIn" style="display: flex;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="15" height="11" rx="2"></rect><path d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5M2.5 10.5h15"></path></svg></a>
+<a href="https://github.com/andriipasiura" aria-label="GitHub" title="GitHub" style="display: flex;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="5" cy="4.5" r="2"></circle><circle cx="5" cy="15.5" r="2"></circle><circle cx="15" cy="7.5" r="2"></circle><path d="M5 6.5v7M15 9.5c0 3-4 2.5-8.5 5"></path></svg></a>
+<a href="https://t.me/pa_andrii" aria-label="Telegram" title="Telegram" style="display: flex;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M18 2.5 1.8 9l5.6 2.2L16 5l-6.6 7.6 6.1 4.9L18 2.5Z"></path></svg></a>
+<span aria-hidden="true" style="width: 1px; height: 80px; background: var(--line2); display: block;"></span>
+</nav>
+
+<main>
+<!-- HERO -->
+<section aria-labelledby="hero-name" style="min-height: 820px; display: flex; align-items: center; justify-content: center; padding: 0 48px; box-sizing: border-box; position: relative; overflow: hidden;">
+<div aria-hidden="true" style="position: absolute; left: 50%; top: 42%; width: 760px; height: 420px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, var(--glow), transparent); filter: blur(30px); pointer-events: none;"></div>
+<div style="position: relative; max-width: 900px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">
+<p class="mono rise" style="--d: 60ms; margin: 0 0 0 6px; font-size: 18px; color: var(--acct);">Hi, my name is,</p>
+<h1 id="hero-name" class="rise" style="--d: 120ms; margin: 0; font-size: 104px; line-height: 1; letter-spacing: -0.045em; font-weight: 800;">Andrii Pasiura</h1>
+</div>
+<p class="rise" style="--d: 180ms; margin: 0; font-size: 52px; line-height: 1.1; letter-spacing: -0.03em; font-weight: 400; color: var(--muted);">Frontend / Fullstack Developer.</p>
+<p class="rise" style="--d: 240ms; margin: 6px 0 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 60ch;">3 years of React and TypeScript on a live streaming platform with 30+ micro-frontends and a multi-brand iGaming platform. Now building with NestJS and PostgreSQL.</p>
+<div class="rise" style="--d: 300ms; display: flex; gap: 12px; margin-top: 14px;">
+<a href="#contact" class="ob" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px; border-radius: 10px; border: 1px solid var(--acc); font-weight: 500; font-size: 15px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"></rect><path d="m2 4 6 5 6-5"></path></svg>Get in touch</a>
+<a href="#projects" class="gh" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 16px; font-weight: 500; font-size: 15px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 2h5v5M14 2 7 9M12 9.5V14H2V4h4.5"></path></svg>View projects</a>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-title" style="max-width: 1240px; margin: 0 auto; padding: 120px 48px 0; box-sizing: border-box;">
+<div style="display: flex; align-items: center; gap: 24px; margin-bottom: 64px;">
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line2));"></span>
+<h2 id="about-title" style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> About me <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--line2));"></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+<div style="flex: 1 1 520px; max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; font-size: 18px; line-height: 1.75; color: var(--fg2);">
+<p style="margin: 0; font-size: 22px; line-height: 1.5; color: var(--fg);">Hey, I’m <span style="color: var(--acct); font-weight: 600;">Andrii</span>, a frontend developer from Kyiv moving into fullstack.</p>
+<p style="margin: 0;">For the last two years I worked in the web infrastructure team of an international live streaming platform: a micro-frontend setup with 30+ apps and 10+ frontend teams. I built a shared library that removed about a third of host merge requests, set up performance monitoring and a Slack AI agent that explains metric drops after releases.</p>
+<p style="margin: 0;">Before that I shipped features and launched partner brands on a multi-brand iGaming platform. Now I’m building fullstack projects with NestJS and PostgreSQL and finishing my Software Engineering degree at KPI.</p>
+<div style="display: flex; gap: 12px; margin-top: 10px;">
+<a href="#cv" class="ob" style="display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--acc); font-size: 15px; font-weight: 500;">Download CV<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 1.5v7.5M3.5 6 7 9.5 10.5 6M2 12.5h10"></path></svg></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" aria-labelledby="exp-title" style="max-width: 1240px; margin: 0 auto; padding: 140px 48px 0; box-sizing: border-box;">
+<div style="display: flex; align-items: center; gap: 24px; margin-bottom: 64px;">
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line2));"></span>
+<h2 id="exp-title" style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Experience <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--line2));"></span>
+</div>
+<ol style="margin: 0; padding: 0 0 0 40px; list-style: none; position: relative; display: flex; flex-direction: column; gap: 32px;">
+<li aria-hidden="true" style="position: absolute; left: 11px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(var(--acc), var(--line2));"></li>
+
+<li style="position: relative;">
+<span aria-hidden="true" style="position: absolute; left: -36px; top: 30px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--acc); box-sizing: border-box;"></span>
+<article style="border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 32px 36px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.02em;">Frontend Developer <span style="color: var(--muted); font-weight: 500;">@</span> <span style="color: var(--acct);">Live streaming platform</span></h3>
+<p style="margin: 0; font-size: 15px; color: var(--muted);">Web Infrastructure Team · international product, NDA · 10+ frontend teams · 30+ micro-frontends</p>
+</div>
+<span class="mono" style="font-size: 13px; color: var(--fg2); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line2); white-space: nowrap;">Sep 2024 – Oct 2026</span>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 14px 40px; font-size: 15px; line-height: 1.65; color: var(--fg2);">
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Built a host-initialized shared library that gives micro-frontends direct access to feature flags and store data: ~20% fewer loader dependencies, no host redeploys for dependency changes (about ⅓ of host MRs).</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Built an internal Slack AI agent that analyzes metric drops after web releases and points to likely causes; contributed to the team’s AI skills library.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Introduced custom performance marks tracked in Looker and Coralogix by platform, browser and device; analyzed regressions with ad-hoc SQL in BigQuery.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Added size-limit bundle reporting to GitLab CI and advised product teams on the impact of their changes.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Served twice as web release sheriff: release scope, staged rollout monitoring, hotfixes, go/no-go sign-off.</span></li>
+</ul>
+<ul aria-label="Technologies" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 500;"><sc-for list="{{exp1}}" as="t" hint-placeholder-count="7"><li style="padding: 5px 12px; border-radius: 999px; background: var(--tint); color: var(--acct);">{{t}}</li></sc-for></ul>
+</article>
+</li>
+
+<li style="position: relative;">
+<span aria-hidden="true" style="position: absolute; left: -36px; top: 30px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line2); box-sizing: border-box;"></span>
+<article style="border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 32px 36px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.02em;">Frontend Developer <span style="color: var(--muted); font-weight: 500;">@</span> <span style="color: var(--acct);">Betinvest Ltd</span></h3>
+<p style="margin: 0; font-size: 15px; color: var(--muted);">B2B Platform Team · outstaff · multi-brand iGaming platform, 20+ brands · React / TypeScript monorepo</p>
+</div>
+<span class="mono" style="font-size: 13px; color: var(--fg2); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line2); white-space: nowrap;">Sep 2023 – Aug 2024</span>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 14px 40px; font-size: 15px; line-height: 1.65; color: var(--fg2);">
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Delivered user-facing features from BA requirements to production: KYC verification flows, affiliate tracking, bonus cards and casino lobby game grids.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Launched 4 partner brands (frontend and CMS setup); the fastest went live in 10 days.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Migrated 10+ shared libraries from JavaScript to TypeScript and global state from React Context to Zustand to cut app-wide re-renders.</span></li>
+<li style="display: flex; gap: 12px;"><span aria-hidden="true" style="color: var(--acct); flex: none;">▹</span><span>Raised the casino lobby’s Lighthouse score from 35 to 65 through code splitting, lazy loading and resource prioritization.</span></li>
+</ul>
+<ul aria-label="Technologies" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 500;"><sc-for list="{{exp2}}" as="t" hint-placeholder-count="5"><li style="padding: 5px 12px; border-radius: 999px; background: var(--tint); color: var(--acct);">{{t}}</li></sc-for></ul>
+</article>
+</li>
+</ol>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-labelledby="sk-title" style="max-width: 1240px; margin: 0 auto; padding: 140px 48px 0; box-sizing: border-box;">
+<div style="display: flex; align-items: center; gap: 24px; margin-bottom: 56px;">
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line2));"></span>
+<h2 id="sk-title" style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> My skills <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--line2));"></span>
+</div>
+<div style="max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px;">
+<sc-for list="{{skills}}" as="g" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600;">{{g.name}} <span class="mono" style="color: var(--acct); font-weight: 500;">()</span></h3>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+<sc-for list="{{g.items}}" as="s" hint-placeholder-count="6">
+<li class="chip" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 8px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface2); font-size: 14px; font-weight: 500;"><span aria-hidden="true" class="mono" style="width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; background: var(--bg); border: 1px solid var(--line2); color: var(--fg2);">{{s.m}}</span>{{s.n}}</li>
+</sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" aria-labelledby="pr-title" style="max-width: 1240px; margin: 0 auto; padding: 140px 48px 0; box-sizing: border-box;">
+<div style="display: flex; align-items: center; gap: 24px; margin-bottom: 56px;">
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line2));"></span>
+<h2 id="pr-title" style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Projects <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--line2));"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 28px;">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="3">
+<article class="prj" style="border: 1px solid var(--line); border-radius: 22px; background: var(--surface); overflow: hidden;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 36px; border-bottom: 1px solid var(--line);">
+<div style="display: flex; align-items: baseline; gap: 20px;">
+<span class="mono" style="font-size: 40px; font-weight: 500; color: var(--line2); letter-spacing: -0.02em;">{{p.n}}</span>
+<div style="display: flex; flex-direction: column; gap: 2px;">
+<h3 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.025em;">{{p.title}}</h3>
+<span style="font-size: 14px; color: var(--muted);">{{p.kind}}</span>
+</div>
+</div>
+<div style="display: flex; gap: 10px;">
+<a href="#" class="ob" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--acc); font-size: 14px; font-weight: 500;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 2h5v5M14 2 7 9M12 9.5V14H2V4h4.5"></path></svg>Live demo</a>
+<a href="#" class="gh" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line2); font-size: 14px; font-weight: 500;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m5 4-3.5 4L5 12M11 4l3.5 4L11 12"></path></svg>Source code</a>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap;">
+<div style="flex: 3 1 600px; padding: 28px 0 0 36px; overflow: hidden; box-sizing: border-box;">
+<div class="shot" role="img" aria-label="Project screenshot placeholder" style="aspect-ratio: 16 / 10; border-radius: 14px 0 0 0; border: 1px solid var(--line2); border-right: none; border-bottom: none; background: var(--surface2); background-image: repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 14px 15px); display: flex; align-items: center; justify-content: center; box-shadow: 0 -20px 60px -20px var(--glow);">
+<span class="mono" style="font-size: 12px; color: var(--dim); padding: 6px 10px; border-radius: 6px; background: var(--surface);">[ app screenshot ]</span>
+</div>
+</div>
+<div style="flex: 2 1 340px; padding: 32px 36px; display: flex; flex-direction: column; gap: 22px;">
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: var(--fg2);">{{p.summary}}</p>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 14px;">
+<div><dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);">Highlights</dt><dd style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: var(--fg2);">{{p.highlights}}</dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);">Tech stack</dt><dd style="margin: 10px 0 0;"><ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 6px; flex-wrap: wrap; font-size: 13px; font-weight: 500;"><sc-for list="{{p.stack}}" as="t" hint-placeholder-count="5"><li style="padding: 4px 11px; border-radius: 999px; background: var(--tint); color: var(--acct);">{{t}}</li></sc-for></ul></dd></div>
+</dl>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="ct-title" style="max-width: 1240px; margin: 0 auto; padding: 140px 48px 120px; box-sizing: border-box;">
+<div style="display: flex; align-items: center; gap: 24px; margin-bottom: 56px;">
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--line2));"></span>
+<h2 id="ct-title" style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;"><span class="mono" style="color: var(--acct); font-weight: 500;">&lt;</span> Contact <span class="mono" style="color: var(--acct); font-weight: 500;">/&gt;</span></h2>
+<span aria-hidden="true" style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--line2));"></span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+<h3 style="margin: 0; font-size: 56px; line-height: 1.05; font-weight: 800; letter-spacing: -0.04em; max-width: 16ch;">Have a role in mind? <span style="color: var(--acct);">Let’s talk.</span></h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 52ch;">Fullstack or frontend, product teams, remote. Email and Telegram reach me fastest; I’m in Kyiv, UTC{{kyivOffset}}, and it’s {{kyivTime}} here now.</p>
+<div style="display: flex; align-items: center; gap: 4px; margin-top: 10px; padding: 4px 4px 4px 22px; border-radius: 14px; border: 1px solid var(--line2);">
+<a href="mailto:pasiura.andrii.dev@gmail.com" class="gh" style="font-size: 22px; font-weight: 600; letter-spacing: -0.015em; padding-right: 10px;">pasiura.andrii.dev@gmail.com</a>
+<button type="button" onClick="{{copy}}" class="cpb" aria-label="{{copyLabel}}" title="{{copyLabel}}" style="width: 48px; height: 48px; border-radius: 10px; border: none; background: transparent; color: {{copyFg}}; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">
+<sc-if value="{{notCopied}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1.5"></rect><path d="M9.5 4.5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v5A1.5 1.5 0 0 0 3 9.5h1.5"></path></svg></sc-if>
+<sc-if value="{{copied}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2.5 7.5 3 3 6-7"></path></svg></sc-if>
+</button>
+</div>
+<p aria-live="polite" style="margin: 0; height: 0; overflow: hidden;">{{copyStatus}}</p>
+<ul style="margin: 18px 0 0; padding: 0; list-style: none; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+<li><a href="https://t.me/pa_andrii" class="ob" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--line2); font-size: 15px; font-weight: 500;"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M18 2.5 1.8 9l5.6 2.2L16 5l-6.6 7.6 6.1 4.9L18 2.5Z"></path></svg>Telegram</a></li>
+<li><a href="https://www.linkedin.com/in/andrii-pasiura" class="ob" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--line2); font-size: 15px; font-weight: 500;"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="15" height="11" rx="2"></rect><path d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5M2.5 10.5h15"></path></svg>LinkedIn</a></li>
+<li><a href="https://github.com/andriipasiura" class="ob" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--line2); font-size: 15px; font-weight: 500;"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="5" cy="4.5" r="2"></circle><circle cx="5" cy="15.5" r="2"></circle><circle cx="15" cy="7.5" r="2"></circle><path d="M5 6.5v7M15 9.5c0 3-4 2.5-8.5 5"></path></svg>GitHub</a></li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer style="max-width: 1240px; margin: 0 auto; padding: 0 48px 48px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<a href="#v4-top" onClick="{{toTop}}" class="ob" aria-label="Back to top" title="Back to top" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 12.5V2M2.5 6.5 7 2l4.5 4.5"></path></svg></a>
+<p style="margin: 0; font-size: 13px; color: var(--dim);">© 2026 Andrii Pasiura</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6B35","options":["#FF6B35","#F5B60B","#E5484D"]},"theme":{"editor":"enum","default":"system","options":["system","light","dark"]},"$preview":{"width":1440,"height":6800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { theme: null, sysDark: true, now: Date.now(), copied: false };
+  }
+  componentDidMount() {
+    var self = this;
+    try {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)'); this._mq = mq;
+      this._onMq = function () { self.setState({ sysDark: mq.matches }); };
+      this.setState({ sysDark: mq.matches });
+      if (mq.addEventListener) mq.addEventListener('change', this._onMq);
+    } catch (e) {}
+    this._clock = setInterval(function () { self.setState({ now: Date.now() }); }, 30000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._clock); clearTimeout(this._t);
+    try { if (this._mq && this._mq.removeEventListener) this._mq.removeEventListener('change', this._onMq); } catch (e) {}
+  }
+  kyiv(now) {
+    try {
+      var d = new Date(now);
+      var time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', hour: '2-digit', minute: '2-digit' }).format(d);
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Kyiv', timeZoneName: 'shortOffset' }).formatToParts(d);
+      var off = (parts.find(function (p) { return p.type === 'timeZoneName'; }) || {}).value || 'GMT+2';
+      return { time: time, offset: off.replace('GMT', '') || '+0' };
+    } catch (e) { return { time: '', offset: '+2' }; }
+  }
+  renderVals() {
+    var s = this.state, self = this;
+    var acc = this.props.accent ?? '#FF6B35';
+    var pal = {
+      '#FF6B35': { dark: '#FF8A5C', light: '#C2410C', on: '#09090B' },
+      '#F5B60B': { dark: '#F5B60B', light: '#8A5A00', on: '#09090B' },
+      '#E5484D': { dark: '#FF6B70', light: '#C0262D', on: '#FFFFFF' }
+    }[String(acc).toUpperCase()] || { dark: acc, light: acc, on: '#09090B' };
+    var pref = s.theme || this.props.theme || 'system';
+    var resolved = pref === 'system' ? (s.sysDark ? 'dark' : 'light') : pref;
+    var k = this.kyiv(s.now);
+    var it = function (pairs) { return pairs.map(function (p) { return { m: p[0], n: p[1] }; }); };
+    return {
+      accent: acc, accDark: pal.dark, accLight: pal.light, onAcc: pal.on,
+      theme: resolved, isDark: resolved === 'dark', isLight: resolved === 'light',
+      themeLabel: resolved === 'dark' ? 'Switch to light theme' : 'Switch to dark theme',
+      toggleTheme: function () { self.setState({ theme: resolved === 'dark' ? 'light' : 'dark' }); },
+      toTop: function (e) {
+        try {
+          if (e && e.preventDefault) e.preventDefault();
+          var el = document.getElementById('v4-top');
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        } catch (err) {}
+      },
+      kyivTime: k.time, kyivOffset: k.offset,
+      exp1: ['React', 'TypeScript', 'Module Federation', 'Webpack', 'Vite', 'GitLab CI', 'BigQuery'],
+      exp2: ['React', 'TypeScript', 'Zustand', 'Monorepo', 'CMS'],
+      skills: [
+        { name: 'Frontend', items: it([['TS','TypeScript'],['JS','JavaScript'],['Re','React'],['Nx','Next.js'],['H5','HTML'],['Cs','CSS / SCSS'],['Tw','Tailwind CSS'],['ui','shadcn/ui']]) },
+        { name: 'State & data', items: it([['Zu','Zustand'],['Rx','Redux'],['TQ','TanStack Query'],['RH','React Hook Form'],['Zd','Zod']]) },
+        { name: 'Backend', items: it([['No','Node.js'],['Ne','NestJS'],['Pg','PostgreSQL'],['Dz','Drizzle ORM'],['Rd','Redis'],['{}','REST API design'],['JW','JWT auth']]) },
+        { name: 'Architecture & build', items: it([['MF','Module Federation'],['Wp','Webpack'],['Vi','Vite'],['pn','pnpm workspaces']]) },
+        { name: 'Performance & monitoring', items: it([['WV','Core Web Vitals'],['LH','Lighthouse'],['BA','Bundle analysis'],['Lk','Looker'],['Cx','Coralogix'],['BQ','BigQuery']]) },
+        { name: 'Testing, DevOps & AI', items: it([['Je','Jest'],['TL','Testing Library'],['Pw','Playwright'],['TC','Testcontainers'],['Dk','Docker'],['CI','GitLab CI'],['CC','Claude Code'],['Cx','Codex']]) }
+      ],
+      projects: [
+        { n: '01', title: '[Project name]', kind: '[Fullstack · pet project]', summary: '[Two or three sentences: what the project does, who it is for, and what makes it interesting technically.]', highlights: '[One or two concrete things you solved: a tricky feature, an architecture decision, a measurable result.]', stack: ['[Tech]', '[Tech]', '[Tech]', '[Tech]', '[Tech]'] },
+        { n: '02', title: '[Project name]', kind: '[Frontend · pet project]', summary: '[Two or three sentences: what the project does, who it is for, and what makes it interesting technically.]', highlights: '[One or two concrete things you solved.]', stack: ['[Tech]', '[Tech]', '[Tech]', '[Tech]'] },
+        { n: '03', title: '[Project name]', kind: '[Desktop · pet project]', summary: '[Two or three sentences: what the project does, who it is for, and what makes it interesting technically.]', highlights: '[One or two concrete things you solved.]', stack: ['[Tech]', '[Tech]', '[Tech]'] }
+      ],
+      copied: !!s.copied,
+      notCopied: !s.copied,
+      copyLabel: s.copied ? 'Email copied' : 'Copy email',
+      copyStatus: s.copied ? 'Email copied to clipboard' : '',
+      copyFg: s.copied ? 'var(--ok)' : 'var(--muted)',
+      copy: function () {
+        try { if (navigator.clipboard) navigator.clipboard.writeText('pasiura.andrii.dev@gmail.com'); } catch (e) {}
+        self.setState({ copied: true }); clearTimeout(self._t);
+        self._t = setTimeout(function () { self.setState({ copied: false }); }, 2000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
