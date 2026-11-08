@@ -8,7 +8,7 @@ export const site: Site = {
   city: 'Kyiv',
   country: 'UA',
   email: 'pasiura.andrii.dev@gmail.com',
-  cv: { href: '/cv/Andrii_Pasiura_CV.pdf', fileName: 'Andrii_Pasiura_CV.pdf' },
+  cv: { href: '/cv/CV_Andrii_Pasiura_Fullstack_Developer.pdf', fileName: 'CV_Andrii_Pasiura_Fullstack_Developer.pdf' },
   seo: {
     title: 'Andrii Pasiura · Frontend / Fullstack Developer',
     description:
